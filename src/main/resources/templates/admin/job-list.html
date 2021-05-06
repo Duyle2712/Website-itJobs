@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/layouts/admin-layout}">
+<head>
+<meta charset="UTF-8">
+<title>Job List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	       <section id="main-content">
+		<section class="wrapper">
+
+			<!-- //tasks -->
+			<div class="agileits-w3layouts-stats">
+				<div class="col-md-12 stats-info stats-last widget-shadow">
+					<div class="stats-last-agile">
+						
+							<div class="row text-center">
+								<h2>Danh sách công việc</h2>
+							</div>
+							
+						<div class="row text-right">
+							<a class="btn btn-success" style="margin-right: 30px; width:90px; " th:href="@{/admin/job-add}">Add New</a>
+						</div>
+						<div class="row">
+							<p class="text-success" th:text="${DELJOBMESSAGE}"></p>
+							<p class="text-success" th:text="${EDITJOBMESSAGE}"></p>
+							
+							<table  id="jobtable" class="table table-bordered table-striped table-responsive">
+							<thead>
+								<tr>
+									<th class="text-center">ID</th>
+									<th class="text-center">Mã CV</th>
+									<th class="text-center">Chức danh</th>
+									<th class="text-center">Cấp bậc</th>
+									<th class="text-center">Mức lương</th>
+									<th class="text-center">Người liên hệ</th>
+									<th class="text-center">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="item:${JOBLIST}" class="odd gradeX">
+									<td></td>
+									<td th:text="${item.macv}"></td>
+									<td th:text="${item.chucdanh}"></td>
+									<td th:text="${item.capbac}"></td>
+									<td th:text="${item.mucluong} + ' $'"></td>
+									<td th:text="${item.nguoilienhe}"></td>
+									<td class="text-center"><a class="btn btn-warning" th:href="@{'/admin/job-edit/'+ ${item.macv}}">Edit</a>
+									 <a class="btn btn-primary" th:href="@{'/admin/job-detail/' + ${item.macv}}">Detail</a>
+									 <a class="btn btn-danger" th:href="@{'/admin/job-delete/' + ${item.macv}}">Delete</a></td>
+								</tr>
+								
+
+							</tbody>
+						</table>
+						<script type="text/javascript">
+						var addSerialNumber = function () {
+						    var i = 0
+						    $('table tr').each(function(index) {
+						        $(this).find('td:nth-child(1)').html(index-1+1);
+						    });
+						};
+
+						addSerialNumber();
+						</script>
+						</div>
+						
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</section>
+
+	</section>
+	</div>
+</body>
+</html>

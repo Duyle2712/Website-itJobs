@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">ITJobs</title> 
+  <!-- CSS only -->
+  <link th:href="@{/jobseeker/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- JavaScript Bundle with Popper.js -->
+  <script th:src="@{/jobseeker/js/bootstrap.bundle.min.js}"></script>
+  <!--Font Awesome-->
+  <link rel="stylesheet" th:href="@{/jobseeker/font/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/jobseeker/font/all.css}">
+  <!-- Style & favicon-->
+  <link rel="stylesheet" th:href="@{/jobseeker/css/style.css}">
+  <link rel="shortcut icon" th:href="@{/jobseeker/img/icon/favicon.png}" type="image/png">
+</head>
+
+<body>
+  <!--Header start-->
+  <section id="header">
+    <div class="menu-bar-top">
+      <nav class="navbar navbar-expand-lg navbar-light py-2 px-4 auto-hiding-navbar ">
+        <div class="container-fluid">
+          <a class="navbar-brand top-left" href="#">Find your favorite Job</a>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto user-button">
+            
+              <li th:unless="${session.FULLNAME}" class="nav-item">
+                <a class="nav-link btn btn-success  ml-3" href="/login">Ứng viên</a>                             
+              </li>   
+              <li th:if="${session.FULLNAME}" class="nav-item">
+                <div class="dropdown">
+                  <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    <label th:text=" 'Hello, ' + ${session.FULLNAME}"></label>
+                  </a>               
+                  <ul class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Tài khoản</a></li>                   
+                    <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
+                  </ul>
+                </div>               
+              </li>          
+              <li class="nav-item ">
+                <a class="nav-link btn btn-outline-success ml-3" href="#">Nhà tuyển dụng</a>
+              </li>
+              
+              
+              
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="menu-bar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{/home}"><img th:src="@{/jobseeker/img/logo.png}" alt="logo-itjob" class="logo-header ml-3"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto mr-2">
+              <li class="nav-item">
+                <a class="nav-link ml-4" aria-current="page" href="#">All Jobs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-4" href="#">IT Companies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-4" onclick="window.scrollBy(0, 1300);" >Tìm Việc Làm</a>
+               
+				
+				
+				
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-4" href="#">Tạo CV</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-4" href="#">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-4 mr-2" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="banner text-center">
+      <h1>IT Jobs Around You</h1>
+      <p>Find you favorite IT job</p>
+    </div>
+  </section>
+  <!--Header end-->
+  <div class="search-job text-center">
+  	<form>
+	  	<input type="text" class="form-control" placeholder="Từ khóa . . .">
+	    <input type="text" class="form-control" placeholder="Công ty . . .">
+	    <input type="text" class="form-control" placeholder="Địa điểm. . .">
+	    <input type="button" class="btn btn-primary" value="Tìm kiếm">
+  	</form> 
+  </div>
+  
+  <!-- Content -->
+  <div layout:fragment="content" class="row">
+  	
+  </div>
+  <!-- End content -->
+	      
+  
+  
+<!--Footer start-->
+<section id="footer" class="text-center text-lg-start">
+  
+	<!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">itJobs</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a th:href="@{/jobseeker/home}" class="text-dark nav-link">Trang chủ</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Contact</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Tìm việc làm</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0">Ứng viên</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="text-dark nav-link">Việc làm mới nhất</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">CV Hay</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Cẩm nang</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Khoá học</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Nhà tuyển dụng</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!" class="text-dark nav-link">Đăng tuyển dụng</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Tìm kiếm hồ sơ</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Sản phẩm dịch vụ khác</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Liên hệ</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0">Việc làm theo khu vực</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="text-dark nav-link">Hồ Chí Minh</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Hà Nội</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Hải Phòng</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark nav-link">Đà Nẵng</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+  <div class="row">
+    <h3 class="text-center mt-4">itJob.com</h3	>
+  </div>
+</section>
+<!--Footer end-->
+<script>
+		$(document).ready( function() {
+		    $("#btnHome").on("click", function() {
+		        $("#content").load("home.html");
+		    });
+		});
+	</script>
+</body>
+
+</html>

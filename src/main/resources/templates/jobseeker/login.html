@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ITJobs - Login</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/admin/images/favicon.png}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/admin/css/style-login.css}">
+    <script th:src="@{/admin/js/jquery-ajax.min.js}"></script>
+  </head>
+  <body>
+
+      <form th:action="@{/checkLogin}" method="post" class="login-form">
+        <h1>Login</h1>
+
+        <div class="txtb">
+          <input type="text" name="email" th:value="${Email}" id="email">
+          <span data-placeholder="Email"></span>
+        </div>
+
+        <div class="txtb">
+          <input type="password" th:value="${Password}" name="password">
+          <span data-placeholder="Password"></span>
+        </div>
+        
+        <div class="mess-position">
+          <span id='email_vali' ></span>
+         </div>
+         <div class="mess-position">
+          <span id='pass_vali' ></span>
+         </div>
+
+        <input type="submit" class="logbtn" value="Login">
+        <p style="color: red;" th:text="${ERROR}"></p>
+
+        <div class="bottom-text">
+          Don't have account? <a th:href="@{/signup}">Sign up</a>
+        </div>
+
+      </form>
+
+      <script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+      
+      $('#password, #email').on('keyup', function () {
+          if ($('#password').val() == "") 
+          {
+        	$('#pass_vali').html('Mật khẩu không được để trống').css('color', 'red');
+          } else 
+        	$('#pass_vali').html('');
+          
+          if ($('#email').val() == "") 
+          {
+        	$('#email_vali').html('Email không được để trống').css('color', 'red');
+          } else 
+        	$('#email_vali').html('');
+      		
+          });
+
+      </script>
+
+
+  </body>
+</html>

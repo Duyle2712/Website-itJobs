@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/layouts/admin-layout}">
+<head>
+<meta charset="UTF-8">
+<title>Job Detail</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	       <section id="main-content">
+		<section class="wrapper">
+
+			<!-- //tasks -->
+			<div class="agileits-w3layouts-stats">
+				<div class="col-md-12 stats-info stats-last widget-shadow">
+					<div th:object=${JOBDETAIL}  class="stats-last-agile">						
+						<div class="text-center">
+							<h2>Chi tiết công việc</h2>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<a class="btn btn-primary" th:href="@{/admin/job-list}">Trở Về</a>
+							</div>
+						</div>																			
+						<div class="row">
+							<div class="col-md-2">									
+								<div class="card" style=" margin-top: 10px">
+								  <ul class="list-group list-group-flush">			 					  
+								    <li  class="list-group-item">
+								    	<b>ID</b>
+								    	<p th:text="*{macv}"></p>
+								    </li>								   
+								  </ul>
+								</div>							
+							</div>
+							<div class="col-md-4">
+								<div class="card" style=" margin-top: 10px">
+								  <ul class="list-group list-group-flush">			 					  
+								    <li class="list-group-item">
+								    	<b>Chức danh </b>
+								    	<p th:text="*{chucdanh}"></p>
+								    </li>
+								    <li class="list-group-item">
+								    	<b>Cấp bậc </b>
+								    	<p th:text="*{capbac}"></p>
+								    </li>
+								    <li th:switch="*{loaicv}" class="list-group-item">
+								    	<b>Loại công việc </b>
+								    	<p th:case="'1'">Toàn thời gian</p>
+								    	<p th:case="'2'">Bán thời gian</p>
+								    	<p th:case="*">Không có Loại</p>
+								    </li>
+								    <li class="list-group-item">
+								    	<b>Địa điểm</b>
+								    	<p th:text="*{diadiem}"></p>
+								    </li>
+								    
+								    <li class="list-group-item">
+								    	<b>Mô tả </b>
+								    	<p th:text="*{mota}"></p>
+								    </li>
+								  </ul>
+								</div>
+							</div>
+							
+							<div class="col-md-4">
+								<div class="card" style=" margin-top: 10px">
+								  <ul class="list-group list-group-flush">								        	
+								    <li class="list-group-item">
+								    	<b>Người liên hệ</b>
+								    	<p th:text="*{nguoilienhe}"></p>
+								    </li>								    
+								    <li class="list-group-item">
+								    	<b>Mức lương </b>
+								    	<p th:text="*{mucluong}+ ' $'"></p>
+								    </li>
+								    <li class="list-group-item">
+								    	<b>Ngôn ngữ </b>
+								    	<p th:text="*{ngonngu}"></p>
+								    </li>
+								    <li th:switch="*{status}" class="list-group-item">
+								    	<b>Trạng thái </b>
+								    	<p th:case="'1'">Đã hiển thị đăng tuyển</p>
+								    	<p th:case="'0'">Chưa hiển thị đăng tuyển</p>
+								    	<p th:case="*">Không có trạng thái</p>
+								    </li>
+								    <li class="list-group-item">
+								    	<b>Yêu Cầu </b>
+								    	<p th:text="*{yeucau}"></p>
+								    	
+								    </li>
+								  </ul>
+								</div>
+							</div>
+							<div class="col-md-2"></div>																
+						</div>							
+							
+																				
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</section>
+
+	</section>
+	</div>
+</body>
+</html>

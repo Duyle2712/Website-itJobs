@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{jobseeker/layouts/jobseeker-layout}">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+</head>
+<body>
+	<div layout:fragment="content">
+			     <!--Nhà tuyển dụng hàng đầu start-->
+		  <section id="recruiter">
+		    <div class="container text-center">
+		      <h3>NHÀ TUYỂN DỤNG HÀNG ĐẦU</h3>
+		      <div>
+		        <img th:src="@{/jobseeker/img/Amazon.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Cisco.jpeg}" alt="">
+		        <img th:src="@{/jobseeker/img/dell.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Lenovo.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/netflix.png}" alt="">
+		        <img th:src="@{/jobseeker/img/Oracle.jpg}" alt="">
+		      </div>
+		
+		      <div>
+		        <img th:src="@{/jobseeker/img/dell.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Lenovo.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Cisco.jpeg}" alt="">       
+		        <img th:src="@{/jobseeker/img/netflix.png}" alt="">
+		        <img th:src="@{/jobseeker/img/Oracle.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Amazon.jpg}" alt="">
+		      </div>
+		
+		      <div>
+		        <img th:src="@{/jobseeker/img/Amazon.jpg}" alt="">      
+		        <img th:src="@{/jobseeker/img/netflix.png}" alt="">
+		        <img th:src="@{/jobseeker/img/Oracle.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Cisco.jpeg}" alt="">
+		        <img th:src="@{/jobseeker/img/dell.jpg}" alt="">
+		        <img th:src="@{/jobseeker/img/Lenovo.jpg}" alt="">
+		      </div>
+		    </div>
+		  </section>
+		  <!--Nhà tuyển dụng hàng đầu end-->
+		  
+		  	<!--IT Job hiện tại start -->
+		  <section id="jobs">
+		    <div class="container">
+		      <h5>CÔNG VIỆC MỚI NHẤT</h5>
+		      <hr>
+				<div class="row" >
+					<div class="col-md-4" th:each="item:${JOBLISTJOBSEEKER}" th:if="${item.status}">
+						<div id="content" class="company-details card">
+					        <div class="job-news">
+					        	<div class="row">
+					        		<h4><b th:text="${item.chucdanh}"></b></h4>
+					        		<hr>
+					        	</div>
+					          	
+				          		<i class="fa fa-user"></i> <span th:utext="${item.capbac}"></span><br>
+				          		
+					          	<i class="fa fa-briefcase"></i> 
+						    	<span th:switch="${item.loaicv}">
+						    		<span th:case="'1'">Toàn thời gian</span>
+							    	<span th:case="'2'">Bán thời gian</span>
+							    	<span th:case="*"></span>
+						    	</span><br>
+								    	
+								    
+					          	<i class="fa fa-dollar-sign"></i> <span th:text="${item.mucluong} +' $'"></span><br>
+					          	<i class="fa fa-map-marked-alt"></i> <span th:text="${item.diadiem}"></span>
+					          
+					          	<!-- <p>Skills <i class="fa fa-angle-double-right"></i>
+					            <small>java</small>				            
+					          	</p> -->
+					          
+					          	<p>Chi Tiết Công Việc <i class="fa fa-angle-double-right"></i>
+					          	<a href="#">Read More</a>
+					          	</p>
+					          	
+					          
+					          
+					        </div>
+					        <div class="apply-btn card-footer">
+					          <a href="#"><button type="submit" class="btn btn-primary">Apply</button></a>
+					        </div>
+				      	</div>
+					</div>
+					
+				      <ul class="pagelink text-center">
+				        <li class="left-arrow">&#10140;</li>
+				        <li class="active">1</li>
+				        <li>2</li>
+				        <li>3</li>
+				        <li>4</li>
+				        <li class="right-arrow">&#10140;</li>
+				      </ul>
+		
+		    	</div>
+		    </div>
+		  </section>
+		  <!--IT Job hiện tại end -->
+		  <!--Stie stat start-->
+		  <section id="site-stats">
+		    <div class="container text-center">
+		      <h3>JOBCLUES SITE STATS </h3>
+		      <div class="row">
+		
+		        <div class="col-md-6">
+		          <div class="row">
+		
+		            <div class="col-6">
+		              <div class="stats-box">
+		                <i class="fa fa-user"></i><span><small>100k +</small></span>
+		                <p>Job Seekers</p>
+		              </div>
+		            </div>
+		
+		            <div class="col-6">
+		              <div class="stats-box">
+		                <i class="fa fa-user"></i><span><small>500 +</small></span>
+		                <p>Employers</p>
+		              </div>
+		            </div>
+		
+		          </div>
+		        </div>
+		
+		        <div class="col-md-6">
+		          <div class="row">
+		
+		            <div class="col-6">
+		              <div class="stats-box">
+		                <i class="fa fa-hand-peace"></i><span><small>10k +</small></span>
+		                <p>Active Jobs</p>
+		              </div>
+		            </div>
+		
+		            <div class="col-6">
+		              <div class="stats-box">
+		                <i class="fa fa-building"></i><span><small>400 +</small></span>
+		                <p>Companies</p>
+		              </div>
+		            </div>
+		
+		          </div>
+		        </div>
+		
+		      </div>
+		    </div>
+		    
+		  </section>
+		  <!--Site stats end-->
+		  			
+		
+	</div>
+</body>
+</html>

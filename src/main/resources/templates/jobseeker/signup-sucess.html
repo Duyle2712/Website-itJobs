@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ITJobs - Sign Up</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/admin/images/favicon.png}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/admin/css/style-login.css}">
+    <script th:src="@{/admin/js/jquery-ajax.min.js}"></script>
+   
+  </head>
+  <body>
+      <form th:action="@{/signup/createAcc}"  method="post" class="login-form-sucess">
+        <h1>Sign up</h1>
+   
+         <div class="mess-position">    	
+          	<span style="color: green; font-size: 20px;"><b th:text="${CREATEACCSUCCESS}"></b><p>Tạo tài khoản thành công</p></span>
+         </div>
+
+        <a  th:href="@{/login}" class="btnLink" ><b>Go to Login page</b></a>
+
+      </form>
+
+
+  </body>
+</html>

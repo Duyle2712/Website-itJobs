@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/layouts/admin-layout}">
+<head>
+<meta charset="UTF-8">
+<title>Job Edit</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<section id="main-content">
+		<section class="wrapper">
+
+
+			<!-- //tasks -->
+			<div class="agileits-w3layouts-stats">
+				<div class="col-md-12 stats-info stats-last widget-shadow">
+					<div  class="stats-last-agile">
+						<div class="text-center">
+							<h2>Sửa Công Việc</h2>
+						</div>
+						<p class="text-success" th:text="${ADDJOBMESSAGE}"></p>
+						<form th:action="@{'/admin/job-edit/' +*{macv}}"  th:object=${JOBEDIT} method="post"  enctype="multipart/form-data">							
+							<div class="panel-body">
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2">
+										<label class="control-label">Chức danh</label>
+									</div>
+									<div class="col-md-10">
+										<input type="text" name="chucdanh" th:field="*{chucdanh}" class="form-control"/>
+									</div>
+
+								</div>
+								<!--end-row-->
+
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2">
+										<label class="control-label">Loại Công Việc</label>
+									</div>
+									<div class="col-md-4">
+
+										<input type="text" name="loaicv" th:field="*{loaicv}" class="form-control" />
+									</div>
+
+									<div class="col-md-2">
+										<label class="control-label">Cấp Bậc</label>
+									</div>
+									<div class="col-md-4">
+										<input type="text"  name="capbac" th:field="*{capbac}" class="form-control" />
+									</div>
+								</div>
+								<!--end-row-->
+
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2">
+										<label class="control-label">Người liên hệ</label>
+									</div>
+									<div class="col-md-4">
+
+										<input type="text"  name="nguoilienhe" th:field="*{nguoilienhe}" class="form-control" />
+									</div>
+
+									<div class="col-md-2">
+										<label class="control-label">Ngôn ngữ</label>
+									</div>
+									<div class="col-md-4">
+										<input type="text"  name="ngonngu" th:field="*{ngonngu}" class="form-control" />
+
+									</div>
+								</div>
+								<!--end-row-->
+
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2 ">
+										<label class="control-label">Mức lương</label>
+									</div>
+									<div class="col-md-4">
+										<input type="text"  name="mucluong" th:field="*{mucluong}" class="form-control" />
+									</div>
+									<div class="col-md-2 ">
+										<label class="control-label">Trạng thái</label>
+									</div>
+									<div class="col-md-4">	
+										
+										<select name="status" th:if="*{status} == 0" class="form-control">
+										  <option value="0" selected>Không hiển thị đăng tuyển</option>
+										  <option value="1">Hiển thị đăng tuyển</option>										  
+										</select>
+										
+										<select name="status" th:if="*{status} == 1" class="form-control">
+										  <option value="0" >Không hiển thị đăng tuyển</option>
+										  <option value="1" selected>Hiển thị đăng tuyển</option>										  
+										</select>
+										
+									</div>
+									</div>
+								</div>
+								<!--end-row-->
+								
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2">
+										<label class="control-label">Địa điểm</label>
+									</div>
+									<div class="col-md-10">
+										<input type="text"  name="diadiem" th:field="*{diadiem}" class="form-control" />
+									</div>
+								</div>
+								<!--end-row-->
+
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2 ">
+										<label class="control-label">Mô Tả</label>
+									</div>
+									<div class="col-md-10">
+										<textarea  name="mota" class="form-control" th:field="*{mota}" id="motaid"></textarea>
+										
+									</div>
+								</div>
+								<!--end-row-->
+
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2 ">
+										<label class="control-label">Yêu Cầu</label>
+									</div>
+									<div class="col-md-10">
+										<textarea  name="yeucau" class="form-control" th:field="*{yeucau}" id="yeucauid"></textarea>
+										
+									</div>
+								</div>
+								<!--end-row-->
+								<!-- start-row-->
+								<div class="row form-group">
+									<div class="col-md-2 ">
+										<label class="control-label">Email Nhà Tuyển Dụng</label>
+									</div>
+									<div class="col-md-4">
+										<input type="text"  name="email" th:field="*{email}" class="form-control" />
+										
+									</div>
+								</div>
+								<!--end-row-->
+
+								<div class="form-group row">
+									<div class="col-sm-2">
+									</div>
+									<div class="col-sm-10">
+										<button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</section>
+
+	</section>		       	
+	</div>
+</body>
+</html>
